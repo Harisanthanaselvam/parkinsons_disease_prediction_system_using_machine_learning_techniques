@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Parkinson's Disease Prediction</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #74ebd5, #acb6e5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.3);
+            width: 350px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #2e86de;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #1b4f72;
+        }
+
+        .result {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <form method="POST" action="/predict">
+        <h2>Parkinson's Disease Predictor</h2>
+
+        <input type="text" name="jitter" placeholder="0.002" required>
+        <input type="text" name="shimmer" placeholder="0.02" required>
+        <input type="text" name="nhr" placeholder="0.01" required>
+        <input type="text" name="hnr" placeholder="25" required>
+        <input type="text" name="rpde" placeholder="0.3" required>
+
+        <button type="submit">Predict</button>
+
+        {% if result %}
+        <div class="result" style="color: {{ color }};">{{ result }}</div>
+        {% endif %}
+    </form>
+</body>
+</html>
